@@ -119,9 +119,14 @@ const About = () => {
                   </div>
                 </div>
 
-                <Button className="bg-gradient-to-r from-purple to-pink hover:opacity-90 transition-opacity">
-                  <Download className="w-4 h-4 mr-2" />
-                  Download Resume
+                <Button 
+                  asChild
+                  className="bg-gradient-to-r from-purple to-pink hover:opacity-90 transition-opacity"
+                >
+                  <a href="/Shweta_Sahu_Resume.pdf" download="Shweta_Sahu_Resume.pdf">
+                    <Download className="w-4 h-4 mr-2" />
+                    Download Resume
+                  </a>
                 </Button>
               </div>
             </div>
