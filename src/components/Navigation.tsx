@@ -8,6 +8,7 @@ const navLinks = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
   { name: "Achievements", href: "#achievements" },
   { name: "Contact", href: "#contact" },
 ];
@@ -95,11 +96,14 @@ const Navigation = () => {
             {/* Resume Button */}
             <div className="hidden md:block">
               <Button
+                asChild
                 size="sm"
                 className="bg-gradient-to-r from-purple to-pink hover:opacity-90 transition-opacity"
               >
-                <Download className="w-4 h-4 mr-2" />
-                Resume
+                <a href="/Shweta_Sahu_Resume.pdf" download="Shweta_Sahu_Resume.pdf">
+                  <Download className="w-4 h-4 mr-2" />
+                  Resume
+                </a>
               </Button>
             </div>
 
@@ -144,10 +148,13 @@ const Navigation = () => {
                   </button>
                 ))}
                 <Button
+                  asChild
                   className="mt-2 bg-gradient-to-r from-purple to-pink hover:opacity-90 transition-opacity"
                 >
-                  <Download className="w-4 h-4 mr-2" />
-                  Download Resume
+                  <a href="/Shweta_Sahu_Resume.pdf" download="Shweta_Sahu_Resume.pdf">
+                    <Download className="w-4 h-4 mr-2" />
+                    Download Resume
+                  </a>
                 </Button>
               </div>
             </div>
