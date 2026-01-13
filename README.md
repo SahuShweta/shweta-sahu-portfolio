@@ -10,7 +10,6 @@
 **A modern, interactive portfolio showcasing my journey as a Computer Science Engineering student**
 
 [🌐 Live Demo](https://shweta-sahu-portfolio-ecni.vercel.app) · [📧 Contact Me](mailto:shwetasahu1710@gmail.com) · [💼 LinkedIn](https://www.linkedin.com/in/shweta-sahu-b239a3307)
-
 </div>
 
 ---
