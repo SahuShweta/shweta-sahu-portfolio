@@ -51,7 +51,7 @@ const Hero = () => {
               className="space-y-4"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight">
-                Hi, I'm{" "}
+                {" "}
                 <span className="gradient-text">Shweta Sahu</span>
               </h1>
               <motion.p
