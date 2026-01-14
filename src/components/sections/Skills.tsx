@@ -1,14 +1,15 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { 
-  Code2, Database, Globe, Terminal, 
-  Cpu, GitBranch, Layout, Server 
+  Code2, Database, Layout, Server, Cpu
 } from "lucide-react";
+import TiltCard from "@/components/TiltCard";
 
 const skillCategories = [
   {
     title: "Programming Languages",
     icon: Code2,
+    color: "purple",
     skills: [
       { name: "Python", level: 90 },
       { name: "C++", level: 85 },
@@ -20,6 +21,7 @@ const skillCategories = [
   {
     title: "Frontend Development",
     icon: Layout,
+    color: "pink",
     skills: [
       { name: "React.js", level: 85 },
       { name: "Next.js", level: 75 },
@@ -31,6 +33,7 @@ const skillCategories = [
   {
     title: "Backend Development",
     icon: Server,
+    color: "cyan",
     skills: [
       { name: "Node.js", level: 80 },
       { name: "Express.js", level: 75 },
@@ -41,6 +44,7 @@ const skillCategories = [
   {
     title: "Database & Tools",
     icon: Database,
+    color: "purple",
     skills: [
       { name: "MongoDB", level: 80 },
       { name: "PostgreSQL", level: 70 },
@@ -78,8 +82,15 @@ const SkillBar = ({ name, level, delay }: { name: string; level: number; delay: 
           initial={{ width: 0 }}
           animate={isInView ? { width: `${level}%` } : {}}
           transition={{ duration: 1, delay, ease: "easeOut" }}
-          className="h-full bg-gradient-to-r from-purple to-pink rounded-full"
-        />
+          className="h-full bg-gradient-to-r from-purple to-pink rounded-full relative overflow-hidden"
+        >
+          {/* Shimmer effect */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+            animate={{ x: ["-100%", "200%"] }}
+            transition={{ duration: 2, delay: delay + 1, repeat: Infinity, repeatDelay: 3 }}
+          />
+        </motion.div>
       </div>
     </div>
   );
@@ -110,32 +121,35 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
+        {/* Skills Grid with 3D Tilt */}
+        <div className="grid md:grid-cols-2 gap-6 mb-16" style={{ perspective: "1000px" }}>
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-              className="glass-card p-6 md:p-8 hover:border-primary/40 transition-all duration-300"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 rounded-lg bg-primary/10">
-                  <category.icon className="w-5 h-5 text-primary" />
+              <TiltCard glowColor={category.color}>
+                <div className="glass-card p-6 md:p-8 hover:border-primary/40 transition-all duration-300 h-full">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="p-2 rounded-lg bg-primary/10">
+                      <category.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-display font-semibold">{category.title}</h3>
+                  </div>
+                  <div className="space-y-4">
+                    {category.skills.map((skill, skillIndex) => (
+                      <SkillBar
+                        key={skill.name}
+                        name={skill.name}
+                        level={skill.level}
+                        delay={categoryIndex * 0.1 + skillIndex * 0.1}
+                      />
+                    ))}
+                  </div>
                 </div>
-                <h3 className="text-xl font-display font-semibold">{category.title}</h3>
-              </div>
-              <div className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <SkillBar
-                    key={skill.name}
-                    name={skill.name}
-                    level={skill.level}
-                    delay={categoryIndex * 0.1 + skillIndex * 0.1}
-                  />
-                ))}
-              </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
@@ -160,6 +174,7 @@ const Skills = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
+                whileHover={{ scale: 1.1, y: -2 }}
                 className="px-4 py-2 bg-secondary/50 rounded-full text-sm text-foreground border border-primary/20 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 cursor-default"
               >
                 {topic}

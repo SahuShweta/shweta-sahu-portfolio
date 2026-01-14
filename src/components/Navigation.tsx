@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import profilePhoto from "@/assets/profile-photo.jpeg";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -62,18 +63,29 @@ const Navigation = () => {
       >
         <div className="container px-4 md:px-6">
           <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
+            {/* Logo with Profile Photo */}
             <motion.a
               href="#home"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection("#home");
               }}
-              className="text-xl md:text-2xl font-display font-bold gradient-text"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-3"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              SS
+              {/* Mini Profile Photo */}
+              <div className="relative">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-purple via-pink to-cyan rounded-full animate-spin-slow opacity-75" />
+                <img
+                  src={profilePhoto}
+                  alt="Shweta Sahu"
+                  className="relative w-9 h-9 rounded-full object-cover border border-background"
+                />
+              </div>
+              <span className="text-xl md:text-2xl font-display font-bold gradient-text">
+                SS
+              </span>
             </motion.a>
 
             {/* Desktop Navigation */}
@@ -98,7 +110,7 @@ const Navigation = () => {
               <Button
                 asChild
                 size="sm"
-                className="bg-gradient-to-r from-purple to-pink hover:opacity-90 transition-opacity"
+                className="bg-gradient-to-r from-purple to-pink hover:opacity-90 transition-opacity shadow-lg shadow-purple/25"
               >
                 <a href="/Shweta_Sahu_Resume.pdf" download="Shweta_Sahu_Resume.pdf">
                   <Download className="w-4 h-4 mr-2" />
@@ -112,11 +124,16 @@ const Navigation = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 text-foreground"
             >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              <motion.div
+                animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </motion.div>
             </button>
           </div>
         </div>
@@ -134,10 +151,13 @@ const Navigation = () => {
           >
             <div className="container px-4 py-4">
               <div className="flex flex-col gap-2">
-                {navLinks.map((link) => (
-                  <button
+                {navLinks.map((link, index) => (
+                  <motion.button
                     key={link.name}
                     onClick={() => scrollToSection(link.href)}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
                     className={`px-4 py-3 text-left text-sm font-medium rounded-lg transition-all duration-300 ${
                       activeSection === link.href.slice(1)
                         ? "text-primary bg-primary/10"
@@ -145,7 +165,7 @@ const Navigation = () => {
                     }`}
                   >
                     {link.name}
-                  </button>
+                  </motion.button>
                 ))}
                 <Button
                   asChild
