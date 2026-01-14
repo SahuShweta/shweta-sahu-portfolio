@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Code2, FileCode } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ParticleBackground from "@/components/ParticleBackground";
+import ProfilePhoto from "@/components/ProfilePhoto";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -19,11 +20,20 @@ const Hero = () => {
 
       <div className="container relative z-10 px-4 md:px-6">
         <div className="flex flex-col items-center text-center space-y-8">
+          {/* Profile Photo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+          >
+            <ProfilePhoto size="lg" />
+          </motion.div>
+
           {/* Status badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="glass-card px-4 py-2 flex items-center gap-2"
           >
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -34,7 +44,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             className="space-y-4"
           >
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight">
@@ -44,7 +54,7 @@ const Hero = () => {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
               className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto"
             >
               Computer Science Engineer | Full-Stack Developer | Problem Solver
@@ -55,7 +65,7 @@ const Hero = () => {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
             className="text-lg text-muted-foreground max-w-xl mx-auto"
           >
             Building digital experiences with modern technologies. Passionate about 
@@ -66,12 +76,12 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
             className="flex flex-col sm:flex-row gap-4"
           >
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-purple to-pink hover:opacity-90 transition-opacity text-lg px-8"
+              className="bg-gradient-to-r from-purple to-pink hover:opacity-90 transition-opacity text-lg px-8 shadow-lg shadow-purple/25"
               onClick={() => scrollToSection("projects")}
             >
               View Projects
@@ -90,28 +100,28 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
             className="flex items-center gap-4 pt-4"
           >
             {[
-              { icon: Linkedin, href: "https://www.linkedin.com/in/shweta-sahu-b239a3307", label: "LinkedIn" },
-              { icon: Github, href: "https://github.com/SahuShweta", label: "GitHub" },
-              { icon: Code2, href: "https://leetcode.com/u/Shweta_Sahu10/", label: "LeetCode" },
-              { icon: FileCode, href: "https://www.geeksforgeeks.org/profile/shwetasan7ie", label: "GeeksforGeeks" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/shweta-sahu-b239a3307", label: "LinkedIn", color: "hover:text-[#0A66C2]" },
+              { icon: Github, href: "https://github.com/SahuShweta", label: "GitHub", color: "hover:text-foreground" },
+              { icon: Code2, href: "https://leetcode.com/u/Shweta_Sahu10/", label: "LeetCode", color: "hover:text-[#FFA116]" },
+              { icon: FileCode, href: "https://www.geeksforgeeks.org/profile/shwetasan7ie", label: "GeeksforGeeks", color: "hover:text-[#2F8D46]" },
             ].map((social, index) => (
               <motion.a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 glass-card hover:border-primary/60 transition-all duration-300 group"
-                whileHover={{ scale: 1.1, y: -2 }}
+                className={`p-3 glass-card hover:border-primary/60 transition-all duration-300 group ${social.color}`}
+                whileHover={{ scale: 1.1, y: -4 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 + index * 0.1 }}
+                transition={{ delay: 0.9 + index * 0.1 }}
               >
-                <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-inherit transition-colors" />
               </motion.a>
             ))}
           </motion.div>
@@ -121,7 +131,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
+          transition={{ delay: 1.3, duration: 0.6 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
           <motion.button

@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ExternalLink, Github, Folder } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import TiltCard from "@/components/TiltCard";
 
 const projects = [
   {
@@ -100,83 +101,108 @@ const Projects = () => {
           className="flex justify-center gap-3 mb-12"
         >
           {categories.map((category) => (
-            <button
+            <motion.button
               key={category}
               onClick={() => setActiveCategory(category)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeCategory === category
-                  ? "bg-gradient-to-r from-purple to-pink text-white"
+                  ? "bg-gradient-to-r from-purple to-pink text-white shadow-lg shadow-purple/25"
                   : "bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground"
               }`}
             >
               {category}
-            </button>
+            </motion.button>
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Projects Grid with 3D Tilt */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" style={{ perspective: "1000px" }}>
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0, y: 30, rotateX: -15 }}
+              animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`glass-card p-6 group hover:border-primary/40 transition-all duration-300 ${
-                project.featured ? "md:col-span-2 lg:col-span-1" : ""
-              }`}
+              layout
             >
-              {/* Project Icon */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <Folder className="w-6 h-6 text-primary" />
-                </div>
-                <div className="flex gap-3">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <Github className="w-5 h-5" />
-                  </a>
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <ExternalLink className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
+              <TiltCard glowColor={index % 2 === 0 ? "purple" : "pink"}>
+                <div className={`glass-card p-6 group hover:border-primary/40 transition-all duration-300 h-full ${
+                  project.featured ? "ring-1 ring-primary/30" : ""
+                }`}>
+                  {/* Project Icon */}
+                  <div className="flex items-center justify-between mb-4">
+                    <motion.div 
+                      className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <Folder className="w-6 h-6 text-primary" />
+                    </motion.div>
+                    <div className="flex gap-3">
+                      <motion.a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                        whileHover={{ scale: 1.2, y: -2 }}
+                      >
+                        <Github className="w-5 h-5" />
+                      </motion.a>
+                      <motion.a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                        whileHover={{ scale: 1.2, y: -2 }}
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                      </motion.a>
+                    </div>
+                  </div>
 
-              {/* Project Info */}
-              <h3 className="text-xl font-display font-semibold mb-2 group-hover:text-primary transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                {project.description}
-              </p>
+                  {/* Project Info */}
+                  <h3 className="text-xl font-display font-semibold mb-2 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                    {project.description}
+                  </p>
 
-              {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 bg-secondary/50 rounded-full text-xs text-muted-foreground"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 bg-secondary/50 rounded-full text-xs text-muted-foreground hover:bg-primary/20 hover:text-primary transition-colors"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
 
-              {/* Featured Badge */}
-              {project.featured && (
-                <div className="mt-4 pt-4 border-t border-border">
-                  <span className="text-xs text-primary font-medium">⭐ Featured Project</span>
+                  {/* Featured Badge */}
+                  {project.featured && (
+                    <motion.div 
+                      className="mt-4 pt-4 border-t border-border"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      <span className="text-xs text-primary font-medium flex items-center gap-1">
+                        <motion.span
+                          animate={{ rotate: [0, 20, -20, 0] }}
+                          transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
+                        >
+                          ⭐
+                        </motion.span>
+                        Featured Project
+                      </span>
+                    </motion.div>
+                  )}
                 </div>
-              )}
+              </TiltCard>
             </motion.div>
           ))}
         </div>
@@ -188,9 +214,15 @@ const Projects = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center mt-12"
         >
-          <Button variant="outline" className="border-primary/50 hover:bg-primary/10">
-            <Github className="w-4 h-4 mr-2" />
-            View All on GitHub
+          <Button 
+            variant="outline" 
+            className="border-primary/50 hover:bg-primary/10 group"
+            asChild
+          >
+            <a href="https://github.com/SahuShweta" target="_blank" rel="noopener noreferrer">
+              <Github className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+              View All on GitHub
+            </a>
           </Button>
         </motion.div>
       </div>
