@@ -19,9 +19,9 @@ const Hero = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan/10 rounded-full blur-[150px] animate-pulse-glow" style={{ animationDelay: "0.5s" }} />
 
       <div className="container relative z-10 px-4 md:px-6">
-        <div className="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-8 md:gap-12 lg:gap-16 max-w-5xl mx-auto">
           {/* Content - Left Side */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6 flex-1">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6">
             {/* Status badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
