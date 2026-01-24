@@ -6,7 +6,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)
 
-   **A modern, interactive portfolio showcasing my journey as a Computer Science Engineering student**
+**A modern, interactive portfolio showcasing my journey as a Computer Science Engineering student**
 
 [🌐 Live Demo](https://shweta-sahu-portfolio-ecni.vercel.app) · [📧 Contact Me](mailto:shwetasahu1710@gmail.com) · [💼 LinkedIn](https://www.linkedin.com/in/shweta-sahu-b239a3307)
 </div>
