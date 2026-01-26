@@ -1,56 +1,31 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { 
-  Code2, Database, Layout, Server, Cpu
-} from "lucide-react";
-import TiltCard from "@/components/TiltCard";
+import { Code2, Layout, Server, Database, Cpu, Sparkles } from "lucide-react";
 
 const skillCategories = [
   {
-    title: "Programming Languages",
+    title: "Languages",
     icon: Code2,
-    color: "purple",
-    skills: [
-      { name: "Python", level: 90 },
-      { name: "C++", level: 85 },
-      { name: "JavaScript", level: 80 },
-      { name: "TypeScript", level: 75 },
-      { name: "Java", level: 70 },
-    ],
+    skills: ["Python", "C++", "JavaScript", "TypeScript", "Java"],
+    featured: true,
   },
   {
-    title: "Frontend Development",
+    title: "Frontend",
     icon: Layout,
-    color: "pink",
-    skills: [
-      { name: "React.js", level: 85 },
-      { name: "Next.js", level: 75 },
-      { name: "Tailwind CSS", level: 90 },
-      { name: "HTML/CSS", level: 95 },
-      { name: "Framer Motion", level: 70 },
-    ],
+    skills: ["React.js", "Next.js", "Tailwind CSS", "Framer Motion"],
+    featured: false,
   },
   {
-    title: "Backend Development",
+    title: "Backend",
     icon: Server,
-    color: "cyan",
-    skills: [
-      { name: "Node.js", level: 80 },
-      { name: "Express.js", level: 75 },
-      { name: "REST APIs", level: 85 },
-      { name: "GraphQL", level: 65 },
-    ],
+    skills: ["Node.js", "Express.js", "REST APIs", "GraphQL"],
+    featured: false,
   },
   {
     title: "Database & Tools",
     icon: Database,
-    color: "purple",
-    skills: [
-      { name: "MongoDB", level: 80 },
-      { name: "PostgreSQL", level: 70 },
-      { name: "Git/GitHub", level: 90 },
-      { name: "Docker", level: 60 },
-    ],
+    skills: ["MongoDB", "PostgreSQL", "Git", "Docker"],
+    featured: false,
   },
 ];
 
@@ -63,123 +38,131 @@ const dsaTopics = [
   "Stack & Queue",
   "Greedy Algorithms",
   "Backtracking",
-  "Bit Manipulation",
-  "Two Pointers",
 ];
-
-const SkillBar = ({ name, level, delay }: { name: string; level: number; delay: number }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  return (
-    <div ref={ref} className="space-y-2">
-      <div className="flex justify-between text-sm">
-        <span className="text-foreground">{name}</span>
-        <span className="text-muted-foreground">{level}%</span>
-      </div>
-      <div className="h-2 bg-secondary rounded-full overflow-hidden">
-        <motion.div
-          initial={{ width: 0 }}
-          animate={isInView ? { width: `${level}%` } : {}}
-          transition={{ duration: 1, delay, ease: "easeOut" }}
-          className="h-full bg-gradient-to-r from-purple to-pink rounded-full relative overflow-hidden"
-        >
-          {/* Shimmer effect */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-            animate={{ x: ["-100%", "200%"] }}
-            transition={{ duration: 2, delay: delay + 1, repeat: Infinity, repeatDelay: 3 }}
-          />
-        </motion.div>
-      </div>
-    </div>
-  );
-};
 
 const Skills = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="py-24 md:py-32 relative">
-      {/* Background elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-pink/5 rounded-full blur-[150px]" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple/5 rounded-full blur-[150px]" />
+    <section id="skills" className="py-24 md:py-32 relative overflow-hidden">
+      {/* Subtle background elements */}
+      <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-pink/5 rounded-full blur-[120px]" />
+      <div className="absolute bottom-1/3 left-0 w-[300px] h-[300px] bg-purple/5 rounded-full blur-[100px]" />
 
       <div className="container px-4 md:px-6 relative" ref={containerRef}>
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4">
-            My <span className="gradient-text">Skills</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Technologies and tools I use to bring ideas to life
+          <div className="flex items-center gap-4 mb-4">
+            <span className="text-primary font-mono text-sm">02.</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold">
+              My <span className="gradient-text">Skills</span>
+            </h2>
+            <div className="hidden sm:block flex-1 h-[1px] bg-gradient-to-r from-border to-transparent max-w-xs" />
+          </div>
+          <p className="text-muted-foreground max-w-xl">
+            Technologies and tools I work with daily
           </p>
         </motion.div>
 
-        {/* Skills Grid with 3D Tilt */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16" style={{ perspective: "1000px" }}>
+        {/* Skills grid - asymmetric bento-style layout */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+              className={`glass-card p-6 group hover:border-primary/40 transition-all duration-300 ${
+                category.featured ? 'lg:row-span-2' : ''
+              }`}
             >
-              <TiltCard glowColor={category.color}>
-                <div className="glass-card p-6 md:p-8 hover:border-primary/40 transition-all duration-300 h-full">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2 rounded-lg bg-primary/10">
-                      <category.icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-display font-semibold">{category.title}</h3>
-                  </div>
-                  <div className="space-y-4">
-                    {category.skills.map((skill, skillIndex) => (
-                      <SkillBar
-                        key={skill.name}
-                        name={skill.name}
-                        level={skill.level}
-                        delay={categoryIndex * 0.1 + skillIndex * 0.1}
-                      />
-                    ))}
+              {/* Header */}
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2.5 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                  <category.icon className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="text-lg font-display font-semibold">{category.title}</h3>
+              </div>
+
+              {/* Skills as tags */}
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill, skillIndex) => (
+                  <motion.span
+                    key={skill}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ 
+                      duration: 0.3, 
+                      delay: 0.3 + categoryIndex * 0.1 + skillIndex * 0.05 
+                    }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="px-4 py-2 rounded-lg bg-secondary/50 text-sm text-foreground border border-transparent hover:border-primary/30 hover:bg-primary/10 transition-all duration-200 cursor-default"
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+
+              {/* Extra content for featured card */}
+              {category.featured && (
+                <div className="mt-8 pt-6 border-t border-border/50">
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Primary languages I use for building applications and solving problems
+                  </p>
+                  <div className="flex items-center gap-2 text-xs text-primary">
+                    <Sparkles className="w-3 h-3" />
+                    <span>Python & C++ for competitive programming</span>
                   </div>
                 </div>
-              </TiltCard>
+              )}
             </motion.div>
           ))}
         </div>
 
-        {/* DSA Topics */}
+        {/* DSA Section - distinctive styling */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="glass-card p-6 md:p-8"
+          className="relative"
         >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 rounded-lg bg-primary/10">
-              <Cpu className="w-5 h-5 text-primary" />
+          <div className="glass-card p-8 md:p-10 overflow-hidden">
+            {/* Decorative gradient */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-primary/10 to-transparent rounded-full blur-2xl" />
+            
+            <div className="relative">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-pink/20">
+                  <Cpu className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-display font-semibold">Data Structures & Algorithms</h3>
+                  <p className="text-sm text-muted-foreground">500+ problems solved across platforms</p>
+                </div>
+              </div>
+
+              {/* DSA topics in a flowing layout */}
+              <div className="flex flex-wrap gap-3">
+                {dsaTopics.map((topic, index) => (
+                  <motion.span
+                    key={topic}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
+                    whileHover={{ scale: 1.05 }}
+                    className="px-5 py-2.5 bg-gradient-to-r from-secondary/80 to-secondary/40 rounded-full text-sm text-foreground border border-primary/10 hover:border-primary/40 hover:from-primary/20 hover:to-pink/10 transition-all duration-300 cursor-default"
+                  >
+                    {topic}
+                  </motion.span>
+                ))}
+              </div>
             </div>
-            <h3 className="text-xl font-display font-semibold">Data Structures & Algorithms</h3>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            {dsaTopics.map((topic, index) => (
-              <motion.span
-                key={topic}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
-                whileHover={{ scale: 1.1, y: -2 }}
-                className="px-4 py-2 bg-secondary/50 rounded-full text-sm text-foreground border border-primary/20 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 cursor-default"
-              >
-                {topic}
-              </motion.span>
-            ))}
           </div>
         </motion.div>
       </div>
