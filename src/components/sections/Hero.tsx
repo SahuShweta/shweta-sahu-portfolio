@@ -132,9 +132,9 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-muted-foreground text-lg max-w-xl leading-relaxed"
             >
-              I craft digital experiences that blend creativity with clean code. 
-              Currently diving deep into competitive programming while building 
-              full-stack applications that actually matter.
+              I build Agentic AI systems with LLMs and craft full-stack web experiences.
+              Currently an IBM SkillsBuild AICTE Intern designing multi-agent pipelines with
+              IBM Granite & LangFlow — and shipping live AI tools on Hugging Face Spaces.
             </motion.p>
 
             {/* CTA Buttons - varied sizes for visual hierarchy */}
