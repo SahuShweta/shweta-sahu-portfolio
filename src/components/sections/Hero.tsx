@@ -6,10 +6,10 @@ import ProfilePhoto from "@/components/ProfilePhoto";
 import { useEffect, useState } from "react";
 
 const roles = [
+  "Agentic AI Developer",
+  "IBM SkillsBuild Intern",
   "Full-Stack Developer",
-  "Competitive Programmer", 
   "Problem Solver",
-  "Tech Enthusiast"
 ];
 
 const TypewriterText = () => {
