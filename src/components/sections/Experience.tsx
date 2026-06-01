@@ -18,60 +18,46 @@ const timelineData: TimelineItem[] = [
   {
     id: 1,
     type: "education",
-    title: "Bachelor of Technology in Computer Science Engineering",
-    organization: "National Institute of Technology",
-    location: "Patna, Bihar, India",
-    period: "2022 – May 2026 (Expected)",
+    title: "B.Tech in Computer Science & Engineering",
+    organization: "Cambridge Institute of Technology, Ranchi",
+    location: "Ranchi, Jharkhand",
+    period: "Aug 2023 – May 2027 · CGPA 7.9",
     description: [
-      "Relevant Coursework: Data Structures & Algorithms, DBMS, Operating Systems, Computer Networks",
-      "Web Development, Object-Oriented Programming, AI/ML fundamentals",
-      "Active participant in coding clubs and hackathons"
+      "Affiliated to Jharkhand University of Technology (JUT), Ranchi",
+      "Relevant Coursework: DSA, DBMS, Operating Systems, Computer Networks, OOP, Discrete Mathematics",
+      "Currently in 3rd Year — focusing on AI/ML, Agentic AI, and full-stack development",
     ],
-    icon: "education"
+    icon: "education",
   },
   {
     id: 2,
     type: "experience",
-    title: "Technical Lead",
-    organization: "College Tech Community",
-    location: "University",
-    period: "2023 – Present",
+    title: "Agentic AI Intern — Problem Statement #12",
+    organization: "IBM SkillsBuild AICTE Virtual Internship",
+    location: "Remote",
+    period: "2026",
     description: [
-      "Led 20+ students in organizing hackathons and technical workshops",
-      "Conducted workshops on React.js and Git, reaching 500+ participants",
-      "Mentored juniors in web development and competitive programming techniques"
+      "Selected for the IBM SkillsBuild AICTE program focused on Agentic AI, LLM integration, and IBM Cloud technologies",
+      "Designed a multi-agent AI pipeline using IBM Granite LLM and LangFlow to generate personalized student learning roadmaps based on skill level, interests, and career goals",
+      "Built three specialized agents — Skill Analysis, Roadmap Recommendation, and Project Recommendation — orchestrated via a Streamlit web interface",
+      "Hands-on with IBM Cloud Lite, prompt engineering, and agentic workflow design",
     ],
-    icon: "work"
+    icon: "work",
   },
   {
     id: 3,
-    type: "experience",
-    title: "Open Source Contributor",
-    organization: "GitHub Open Source Projects",
-    location: "Remote",
-    period: "2024 – Present",
-    description: [
-      "Contributed bug fixes, features, and documentation to multiple repositories",
-      "Active participation in code reviews and community discussions",
-      "Improved codebase quality through consistent contributions"
-    ],
-    icon: "work"
-  },
-  {
-    id: 4,
     type: "achievement",
-    title: "Certifications & Achievements",
-    organization: "Various Platforms",
+    title: "AI / ML Deployments on Hugging Face",
+    organization: "Hugging Face Spaces · @Shweta103",
     location: "Online",
-    period: "2023 – Present",
+    period: "2025 – Present",
     description: [
-      "Full-Stack Web Development (Udemy/Coursera)",
-      "DSA Specialization Certificate",
-      "JavaScript & Data Structures (freeCodeCamp)",
-      "React Complete Guide | Git & GitHub Essentials"
+      "Published and deployed live AI Spaces: AI Resume Analyzer and AI Image Caption Generator",
+      "Active LeetCode (Shweta_Sahu10) and GeeksforGeeks (shwetasan7ie) practice across Arrays, Strings, Linked Lists, Stacks, Queues, Recursion, Searching & Sorting",
+      "Consistent topic-wise DSA problem solving with 500+ problems attempted",
     ],
-    icon: "award"
-  }
+    icon: "award",
+  },
 ];
 
 const getIcon = (iconType: string) => {
