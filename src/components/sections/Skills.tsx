@@ -4,27 +4,44 @@ import { Code2, Layout, Server, Database, Cpu, Sparkles } from "lucide-react";
 
 const skillCategories = [
   {
-    title: "Languages",
-    icon: Code2,
-    skills: ["Python", "C++", "JavaScript", "TypeScript", "Java"],
+    title: "AI / ML / NLP",
+    icon: Sparkles,
+    skills: [
+      "Agentic AI",
+      "LLMs",
+      "NLP",
+      "Computer Vision",
+      "IBM Granite",
+      "LangFlow",
+      "Hugging Face Transformers",
+      "Prompt Engineering",
+    ],
     featured: true,
   },
   {
-    title: "Frontend",
+    title: "Languages",
+    icon: Code2,
+    skills: ["Python", "JavaScript", "TypeScript", "HTML", "CSS"],
+    featured: false,
+  },
+  {
+    title: "Frameworks & Libraries",
     icon: Layout,
-    skills: ["React.js", "Next.js", "Tailwind CSS", "Framer Motion"],
+    skills: ["Streamlit", "React.js", "Node.js", "Express.js", "Bootstrap"],
     featured: false,
   },
   {
-    title: "Backend",
-    icon: Server,
-    skills: ["Node.js", "Express.js", "REST APIs", "GraphQL"],
-    featured: false,
-  },
-  {
-    title: "Database & Tools",
+    title: "Database, Tools & Platforms",
     icon: Database,
-    skills: ["MongoDB", "PostgreSQL", "Git", "Docker"],
+    skills: [
+      "MongoDB",
+      "Git & GitHub",
+      "Hugging Face Spaces",
+      "IBM Cloud Lite",
+      "Vercel",
+      "VS Code",
+      "Linux",
+    ],
     featured: false,
   },
 ];
@@ -32,12 +49,12 @@ const skillCategories = [
 const dsaTopics = [
   "Arrays & Strings",
   "Linked Lists",
+  "Stacks & Queues",
+  "Recursion",
+  "Searching & Sorting",
   "Trees & Graphs",
   "Dynamic Programming",
-  "Sorting & Searching",
-  "Stack & Queue",
   "Greedy Algorithms",
-  "Backtracking",
 ];
 
 const Skills = () => {
@@ -113,11 +130,11 @@ const Skills = () => {
               {category.featured && (
                 <div className="mt-8 pt-6 border-t border-border/50">
                   <p className="text-sm text-muted-foreground mb-4">
-                    Primary languages I use for building applications and solving problems
+                    Currently building multi-agent AI systems with IBM Granite LLM & LangFlow
                   </p>
                   <div className="flex items-center gap-2 text-xs text-primary">
                     <Sparkles className="w-3 h-3" />
-                    <span>Python & C++ for competitive programming</span>
+                    <span>IBM SkillsBuild AICTE — Agentic AI Intern</span>
                   </div>
                 </div>
               )}

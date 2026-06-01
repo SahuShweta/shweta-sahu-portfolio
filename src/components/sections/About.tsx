@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const stats = [
   { label: "DSA Problems", value: 500, suffix: "+", icon: Zap },
-  { label: "Projects Built", value: 15, suffix: "+", icon: Coffee },
+  { label: "AI Projects Built", value: 4, suffix: "+", icon: Coffee },
 ];
 
 const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) => {
@@ -84,26 +84,27 @@ const About = () => {
             {/* Personal narrative - conversational */}
             <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
               <p>
-                <span className="text-foreground font-medium">Hey!</span> I'm Shweta, a Computer Science 
-                student who fell in love with the art of problem-solving. There's something magical 
-                about turning an idea into working code that people can actually use.
+                <span className="text-foreground font-medium">Hey!</span> I'm Shweta, a 3rd-year
+                Computer Science Engineering student at Cambridge Institute of Technology, Ranchi,
+                exploring the intersection of <span className="text-primary">Agentic AI</span>,
+                LLMs, and full-stack development.
               </p>
               <p>
-                My journey started with curiosity about how things work, and now I spend my days 
-                building full-stack applications and nights conquering DSA problems. 
-                <span className="text-primary"> Competitive programming</span> taught me to think 
-                faster and code smarter.
+                I'm currently an <span className="text-foreground font-medium">IBM SkillsBuild AICTE
+                Agentic AI Intern</span>, building multi-agent pipelines with IBM Granite LLM and
+                LangFlow. Outside the internship, I ship live AI tools on Hugging Face Spaces and
+                grind DSA on LeetCode & GeeksforGeeks.
               </p>
               <p>
-                When I'm not coding, you'll find me exploring new technologies, contributing to 
-                open source, or mentoring fellow learners. I believe in 
+                When I'm not coding, you'll find me experimenting with new LLM workflows,
+                learning prompt engineering, or polishing UIs. I believe in
                 <span className="text-foreground font-medium"> building things that matter</span>.
               </p>
             </div>
 
             {/* What I'm into - personal touches */}
             <div className="flex flex-wrap gap-3">
-              {["Clean Code", "Problem Solving", "UI/UX", "Learning", "Open Source"].map((tag, i) => (
+              {["Agentic AI", "LLMs & NLP", "Problem Solving", "Clean Code", "Open Source"].map((tag, i) => (
                 <motion.span
                   key={tag}
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -128,11 +129,11 @@ const About = () => {
               </div>
               <div>
                 <h4 className="font-display font-semibold text-foreground mb-1">
-                  B.Tech in Computer Science
+                  B.Tech in Computer Science & Engineering
                 </h4>
                 <p className="text-sm text-muted-foreground">
-                  Currently pursuing my degree with focus on algorithms, 
-                  data structures, and software development
+                  Cambridge Institute of Technology, Ranchi · 3rd Year · CGPA 7.9
+                  <br />Aug 2023 – May 2027 · Affiliated to JUT, Ranchi
                 </p>
               </div>
             </motion.div>

@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Code2, FileCode, Download } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Code2, FileCode, Download, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ParticleBackground from "@/components/ParticleBackground";
 import ProfilePhoto from "@/components/ProfilePhoto";
 import { useEffect, useState } from "react";
 
 const roles = [
+  "Agentic AI Developer",
+  "IBM SkillsBuild Intern",
   "Full-Stack Developer",
-  "Competitive Programmer", 
   "Problem Solver",
-  "Tech Enthusiast"
 ];
 
 const TypewriterText = () => {
@@ -132,9 +132,9 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-muted-foreground text-lg max-w-xl leading-relaxed"
             >
-              I craft digital experiences that blend creativity with clean code. 
-              Currently diving deep into competitive programming while building 
-              full-stack applications that actually matter.
+              I build Agentic AI systems with LLMs and craft full-stack web experiences.
+              Currently an IBM SkillsBuild AICTE Intern designing multi-agent pipelines with
+              IBM Granite & LangFlow — and shipping live AI tools on Hugging Face Spaces.
             </motion.p>
 
             {/* CTA Buttons - varied sizes for visual hierarchy */}
@@ -175,6 +175,7 @@ const Hero = () => {
               {[
                 { icon: Linkedin, href: "https://www.linkedin.com/in/shweta-sahu-b239a3307", label: "LinkedIn", hoverColor: "hover:text-[#0A66C2]" },
                 { icon: Github, href: "https://github.com/SahuShweta", label: "GitHub", hoverColor: "hover:text-foreground" },
+                { icon: Sparkles, href: "https://huggingface.co/Shweta103", label: "Hugging Face", hoverColor: "hover:text-[#FFD21E]" },
                 { icon: Code2, href: "https://leetcode.com/u/Shweta_Sahu10/", label: "LeetCode", hoverColor: "hover:text-[#FFA116]" },
                 { icon: FileCode, href: "https://www.geeksforgeeks.org/profile/shwetasan7ie", label: "GeeksforGeeks", hoverColor: "hover:text-[#2F8D46]" },
               ].map((social, index) => (
