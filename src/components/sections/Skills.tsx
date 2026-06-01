@@ -130,11 +130,11 @@ const Skills = () => {
               {category.featured && (
                 <div className="mt-8 pt-6 border-t border-border/50">
                   <p className="text-sm text-muted-foreground mb-4">
-                    Primary languages I use for building applications and solving problems
+                    Currently building multi-agent AI systems with IBM Granite LLM & LangFlow
                   </p>
                   <div className="flex items-center gap-2 text-xs text-primary">
                     <Sparkles className="w-3 h-3" />
-                    <span>Python & C++ for competitive programming</span>
+                    <span>IBM SkillsBuild AICTE — Agentic AI Intern</span>
                   </div>
                 </div>
               )}
