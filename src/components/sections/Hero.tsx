@@ -175,6 +175,7 @@ const Hero = () => {
               {[
                 { icon: Linkedin, href: "https://www.linkedin.com/in/shweta-sahu-b239a3307", label: "LinkedIn", hoverColor: "hover:text-[#0A66C2]" },
                 { icon: Github, href: "https://github.com/SahuShweta", label: "GitHub", hoverColor: "hover:text-foreground" },
+                { icon: Sparkles, href: "https://huggingface.co/Shweta103", label: "Hugging Face", hoverColor: "hover:text-[#FFD21E]" },
                 { icon: Code2, href: "https://leetcode.com/u/Shweta_Sahu10/", label: "LeetCode", hoverColor: "hover:text-[#FFA116]" },
                 { icon: FileCode, href: "https://www.geeksforgeeks.org/profile/shwetasan7ie", label: "GeeksforGeeks", hoverColor: "hover:text-[#2F8D46]" },
               ].map((social, index) => (
