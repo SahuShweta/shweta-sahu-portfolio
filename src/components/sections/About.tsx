@@ -129,11 +129,11 @@ const About = () => {
               </div>
               <div>
                 <h4 className="font-display font-semibold text-foreground mb-1">
-                  B.Tech in Computer Science
+                  B.Tech in Computer Science & Engineering
                 </h4>
                 <p className="text-sm text-muted-foreground">
-                  Currently pursuing my degree with focus on algorithms, 
-                  data structures, and software development
+                  Cambridge Institute of Technology, Ranchi · 3rd Year · CGPA 7.9
+                  <br />Aug 2023 – May 2027 · Affiliated to JUT, Ranchi
                 </p>
               </div>
             </motion.div>
