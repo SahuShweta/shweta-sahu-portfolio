@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const stats = [
   { label: "DSA Problems", value: 500, suffix: "+", icon: Zap },
-  { label: "Projects Built", value: 15, suffix: "+", icon: Coffee },
+  { label: "AI Projects Built", value: 4, suffix: "+", icon: Coffee },
 ];
 
 const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) => {
