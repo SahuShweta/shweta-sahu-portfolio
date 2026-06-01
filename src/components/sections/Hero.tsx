@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Code2, FileCode, Download } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Code2, FileCode, Download, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ParticleBackground from "@/components/ParticleBackground";
 import ProfilePhoto from "@/components/ProfilePhoto";
